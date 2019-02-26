@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
+	//TODO: RSDN
     class PrivateTenInt<T> where T : IComparable
     {
+		//TODO: Во-первых часто дублируется 10, во-вторых часто дублируется 5.
+		//TODO: Всё повыносить и убрать дублирование
+		//TODO: RSDN
         private T[] intArray = new T[10];
 
         public PrivateTenInt(T[] array)
@@ -33,10 +37,12 @@ namespace WinterTask
         {
             get
             {
+				//TODO: Дублируется ниже.
                 if (Math.Abs(index) > 5 || index == 0)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
+				//TODO: RSDN
                 return intArray[5+index];                
             }
             set

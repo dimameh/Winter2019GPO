@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
+	//TODO: RSDN
     class PrivateDoubleArray<T> where T : IComparable
     {
+		//TODO: Дублирование размерностей!
+		//TODO: RSDN
         private T[] doubleArray = new T[100];
 
         public PrivateDoubleArray(T[] doubleArray)
@@ -16,6 +19,7 @@ namespace WinterTask
 
             if (doubleArray.Length <= 100)
             {
+				//TODO: Дублирование ниже - можно сократить.
                 for (int i = 0; i < doubleArray.Length; i++)
                 {
                     this.doubleArray[i] = doubleArray[i];
@@ -34,6 +38,7 @@ namespace WinterTask
         {
             get
             {
+				//TODO: Дублирование ниже!
                 if (i > 9 || j > 9 || i < 0 || j < 0)
                 {
                     throw new ArgumentOutOfRangeException();

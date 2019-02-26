@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WinterTask
-{
+{//TODO: RSDN
     class Program
-    {
+    {//TODO: RSDN
         static void Main(string[] args)
         {
-
+			//TODO: RSDN
             Console.WriteLine("stringList demo-------------");
             StringList stringList = new StringList(new List<string> { "Asdfg", "Qwerty", "Qxcvb" });
 
@@ -18,6 +18,7 @@ namespace WinterTask
 
             Console.WriteLine();
             Console.WriteLine("PrivateTenInt demo-------------");
+			//TODO: RSDN
             PrivateTenInt<int> intList = new PrivateTenInt<int>(new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
             Console.WriteLine(intList[-5]);
@@ -34,14 +35,15 @@ namespace WinterTask
 
             Console.WriteLine(privateDoubleArray[0, 0]);
             Console.WriteLine(privateDoubleArray[1, 5]);
-
+			//TODO: Дубли вывода меню - посокращать!
             Console.WriteLine();
             Console.WriteLine("-------------LINQ-------------");
 
             Console.WriteLine("15 Integers demo-------------");
             List<int> integers = new List<int> { 1, 2, 51, 4, 5, 52, 7, 53, 9, 54, 11, 12, 55 };
-
+			//TODO: RSDN
             var result1 =
+				//TODO: Скобки писать не обязательно
                 (
                 from ints in integers
                 where ints > 50
@@ -78,7 +80,7 @@ namespace WinterTask
               (
               from ints in integers
               where ints > 0
-              select ints * 2 * 3.14
+              select ints * 2 * 3.14//TODO: Math.PI - не?
               );
             PrintList(result3);
 
@@ -90,7 +92,7 @@ namespace WinterTask
               from ints in integers
               select ints
               ).ToDictionary(ints => ints, ints => ints % 2 == 0);
-
+			//TODO: RSDN
             foreach (var v in isEven)
             {
                 Console.WriteLine(v.Key.ToString() + ' ' + v.Value);
@@ -121,6 +123,7 @@ namespace WinterTask
             Console.WriteLine();
             Console.WriteLine("A names-------------");
             IEnumerable<Contact> aNames = from contact in contacts
+											//TODO: Если не окажется первого символа в строке?
                                           where contact.Name[0] == 'А'
                                           select contact;
 
@@ -148,8 +151,11 @@ namespace WinterTask
             Console.WriteLine("Dictionary<string, Sex>-------------");
             Dictionary<string, Sex> sexDictionary = (from contact in contacts
                                                      select contact
+					//TODO: RSDN
                                                     ).ToDictionary(contact => contact.ToString(), contact => contact.Sex);
-            foreach (var v in sexDictionary)
+			//TODO: Дубли
+	        //TODO: RSDN
+	        foreach (var v in sexDictionary)
             {
                 Console.WriteLine(v.Key.ToString() + " - " + v.Value);
             }
@@ -159,8 +165,10 @@ namespace WinterTask
             Console.WriteLine("Dictionary<string, Contact>-------------");
             Dictionary<string, Contact> nameDictionary = (from contact in contacts
                                                           select contact
+					//TODO: RSDN
                                                     ).ToDictionary(contact => contact.Name, contact => contact);
-            foreach (var v in nameDictionary)
+			//TODO: RSDN
+	        foreach (var v in nameDictionary)
             {
                 Console.WriteLine(v.Key.ToString() + " - " + v.Value);
             }

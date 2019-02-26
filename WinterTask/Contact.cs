@@ -2,6 +2,7 @@
 {
     public class Contact
     {
+		//TODO: Публичные поля!
         public string Name;
         public long PhoneNumber;
         public Sex Sex; 
@@ -11,6 +12,7 @@
             return Name + ' ' + PhoneNumber + ' ' + Sex.ToString();
         }
     }
+	//TODO: RSDN
     public enum Sex { Male, Female }
     
 }

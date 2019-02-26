@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
+	//TODO: RSDN
     class Point3D
     {
+		//TODO: Публичные поля!
         public double X;
         public double Y;
         public double Z;
@@ -51,6 +53,7 @@ namespace WinterTask
 
         public static bool operator !=(Point3D point1, Point3D point2)
         {
+			//TODO: Не правильно реализовано!
             return !(point1.X == point2.X && point1.Y == point2.Y && point1.Z == point2.Z);
         }
 
@@ -73,5 +76,6 @@ namespace WinterTask
         {
             return point1.X >= point2.X && point1.Y >= point2.Y && point1.Z >= point2.Z;
         }
+		//TODO: Где явное преобразование из double?
     }
 }
