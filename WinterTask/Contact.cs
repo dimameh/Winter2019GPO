@@ -1,18 +1,30 @@
 ﻿namespace WinterTask
 {
+    /// <summary>
+    /// Информация о контакте
+    /// </summary>
     public class Contact
     {
-		//TODO: Публичные поля!
-        public string Name;
-        public long PhoneNumber;
-        public Sex Sex; 
+        //Имя
+        public string Name { get; set; }
+        //Телефонный номер
+        public long PhoneNumber { get; set; }
+        //Пол
+        public Sex Sex { get; set; }
 
         public override string ToString()
         {
             return Name + ' ' + PhoneNumber + ' ' + Sex.ToString();
         }
     }
-	//TODO: RSDN
-    public enum Sex { Male, Female }
+
+	/// <summary>
+    /// Пол
+    /// </summary>    
+    public enum Sex
+    {
+        Male,
+        Female
+    }
     
 }

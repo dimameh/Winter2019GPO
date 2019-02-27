@@ -6,37 +6,40 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
-	//TODO: RSDN
-    class StringList
+	/// <summary>
+    /// Содержит список строк, индексируемых по первому символу
+    /// </summary>
+    class PrivateStringList
     {
-		//TODO: RSDN
-        private List<string> stringList;
+        private List<string> StringList { get; set; }
 
-        public StringList(List<string> stringList)
+        public PrivateStringList(List<string> stringList)
         {
-            this.stringList = stringList;
+            StringList = stringList;
         }
-
-		//TODO: RSDN
-        public string this [char ch]
+        
+        public string this [char symbol]
         {
             get
             {
-                return stringList[GetIndexByFirstChar(ch)];
+                return StringList[GetIndexByFirstChar(symbol)];
             }
             set
             {
-				//TODO: Упадёт при передаче несуществующего символа
-                stringList[GetIndexByFirstChar(ch)] = value;
+                if (GetIndexByFirstChar(symbol) == -1)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                StringList[GetIndexByFirstChar(symbol)] = value;
             }
         }
 
-		//TODO: RSDN
-        private int GetIndexByFirstChar(char ch)
+        private int GetIndexByFirstChar(char symbol)
         {
-            for (int i = 0; i < stringList.Capacity; i++)
+            for (int i = 0; i < StringList.Capacity; i++)
             {
-                if(stringList[i][0] == ch)
+                if(StringList[i][0] == symbol)
                 {
                     return i;
                 }

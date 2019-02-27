@@ -6,29 +6,30 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
-	//TODO: RSDN
+	/// <summary>
+    /// Класс хранящий массив, вмещающий 10 элементов, индексация которых начинается с -5 и заканчивается 5
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class PrivateTenInt<T> where T : IComparable
     {
-		//TODO: Во-первых часто дублируется 10, во-вторых часто дублируется 5.
-		//TODO: Всё повыносить и убрать дублирование
-		//TODO: RSDN
-        private T[] intArray = new T[10];
+        private const int Capacity = 10;
+        private T[] IntArray { get; set; } = new T[Capacity];
 
         public PrivateTenInt(T[] array)
         {
-            Array.Clear(intArray, 0, intArray.Length);
-            if (array.Length <= 10) 
+            Array.Clear(IntArray, 0, IntArray.Length);
+            if (array.Length <= Capacity) 
             {
                 for (int i = 0; i < array.Length; i++)
                 {
-                    intArray[i] = array[i];
+                    IntArray[i] = array[i];
                 }
             }
             else
             {
-                for (int i = 0; i <10; i++)
+                for (int i = 0; i < Capacity; i++)
                 {
-                    intArray[i] = array[i];
+                    IntArray[i] = array[i];
                 }
             }
         }
@@ -37,21 +38,21 @@ namespace WinterTask
         {
             get
             {
-				//TODO: Дублируется ниже.
-                if (Math.Abs(index) > 5 || index == 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-				//TODO: RSDN
-                return intArray[5+index];                
+                IsIndexCorrect(index);
+                return IntArray[Capacity / 2 + index];                
             }
             set
             {
-                if (Math.Abs(index) > 5 || index == 0)
-                {
-                    throw new ArgumentOutOfRangeException();                   
-                }
-                intArray[5 + index] = value;
+                IsIndexCorrect(index);
+                IntArray[Capacity / 2 + index] = value;
+            }
+        }
+
+        private void IsIndexCorrect(int index)
+        {
+            if( Math.Abs(index) > Capacity / 2 || index == 0)
+            {
+                throw new ArgumentOutOfRangeException();
             }
         }
     }

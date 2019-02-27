@@ -6,52 +6,46 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
-	//TODO: RSDN
+    /// <summary>
+    /// Класс который хранит квадратную матрицу 10x10 IComparable объектов
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class PrivateDoubleArray<T> where T : IComparable
     {
-		//TODO: Дублирование размерностей!
-		//TODO: RSDN
-        private T[] doubleArray = new T[100];
+        const byte arrayCapacity = 100;
+
+		//Хранимый массив объектов
+        private T[] DoubleArray { get; set; } = new T[arrayCapacity];
 
         public PrivateDoubleArray(T[] doubleArray)
         {
-            Array.Clear(this.doubleArray, 0, doubleArray.Length);
+            Array.Clear(DoubleArray, 0, doubleArray.Length);
 
-            if (doubleArray.Length <= 100)
+            for (int i = 0; i < doubleArray.Length && i < arrayCapacity; i++)
             {
-				//TODO: Дублирование ниже - можно сократить.
-                for (int i = 0; i < doubleArray.Length; i++)
-                {
-                    this.doubleArray[i] = doubleArray[i];
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 100; i++)
-                {
-                    this.doubleArray[i] = doubleArray[i];
-                }
+                DoubleArray[i] = doubleArray[i];
             }
         }
 
         public T this[int i, int j]
         {
             get
-            {
-				//TODO: Дублирование ниже!
-                if (i > 9 || j > 9 || i < 0 || j < 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                return doubleArray[10*i+j];
+            { 
+                IndexCorrectException(i, j);
+                return DoubleArray[(int)Math.Sqrt(arrayCapacity)*i+j];
             }
             set
             {
-                if (i > 9 || j > 9 || i < 0 || j < 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                doubleArray[10 * i + j] = value;
+                IndexCorrectException(i, j);
+                DoubleArray[(int)Math.Sqrt(arrayCapacity) * i + j] = value;
+            }
+        }
+        
+        private void IndexCorrectException(int i, int j)
+        {
+            if(i > (int)Math.Sqrt(arrayCapacity)-1 || j > (int)Math.Sqrt(arrayCapacity)-1 || i < 0 && j < 0)
+            {
+                throw new ArgumentOutOfRangeException();
             }
         }
     }
