@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
+	//TODO: RSDN
 	/// <summary>
     /// Точка трехмерного пространства
     /// </summary>
     class Point3D
     {
-        public double X { get; set; } = 0;
-        public double Y { get; set; } = 0;
-        public double Z { get; set; } = 0;
+	    //TODO: Зачем паблик set?
+		public double X { get; set; } = 0;
+	    //TODO: Зачем паблик set?
+		public double Y { get; set; } = 0;
+	    //TODO: Зачем паблик set?
+		public double Z { get; set; } = 0;
 
         public Point3D(double x, double y, double z)
         {
@@ -49,7 +53,9 @@ namespace WinterTask
 
         public bool Equals(Point3D other)
         {
-            return !ReferenceEquals(null, other) && (ReferenceEquals(this, other) || (other.X == X && other.Y == Y && other.Z == Z));
+			//TODO: RSDN
+			//TODO: https://stackoverflow.com/questions/814878/c-sharp-difference-between-and-equals
+			return !ReferenceEquals(null, other) && (ReferenceEquals(this, other) || (other.X == X && other.Y == Y && other.Z == Z));
         }
 
         public override bool Equals(object obj)
@@ -64,12 +70,14 @@ namespace WinterTask
 
         public static bool operator ==(Point3D point1, Point3D point2)
         {
-            return Equals(point1, point2);
+	        //TODO: https://stackoverflow.com/questions/814878/c-sharp-difference-between-and-equals
+			return Equals(point1, point2);
         }
 
         public static bool operator !=(Point3D point1, Point3D point2)
         {
-            return !Equals(point1, point2);
+	        //TODO: https://stackoverflow.com/questions/814878/c-sharp-difference-between-and-equals
+			return !Equals(point1, point2);
         }
 
         public static bool operator <(Point3D point1, Point3D point2)

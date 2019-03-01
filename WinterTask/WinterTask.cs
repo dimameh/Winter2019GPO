@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WinterTask
-{   /// <summary>
+{   
+	//TODO: RSDN
+	/// <summary>
     /// Класс запускающий демонстрацию работы созданных классов
     /// </summary>
     class WinterTask
     {
+		//TODO: RSDN
         static void WriteTitle(string title)
         {
             Console.WriteLine();
@@ -17,15 +20,19 @@ namespace WinterTask
             Console.WriteLine(title + "-------------");
         }
 
+		//TODO: RSDN
         //Точка входа
         static void Main(string[] args)
         {
+	        //TODO: ВЕЗДЕ, где понятен тип из правой части - использовать var!
             WriteTitle("stringList demo");
+			//TODO: RSDN
             PrivateStringList stringList = new PrivateStringList(new List<string> { "Asdfg", "Qwerty", "Qxcvb" });
 
             Console.WriteLine(stringList['Q']);
 
             WriteTitle("PrivateTenInt demo");
+			//TODO: RSDN
             PrivateTenInt<int> intList = new PrivateTenInt<int>(new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
             Console.WriteLine(intList[-5]);
@@ -38,6 +45,7 @@ namespace WinterTask
 
                 doubleArray[i] = i;
             }
+			//TODO: RSDN
             PrivateDoubleArray<double> privateDoubleArray = new PrivateDoubleArray<double>(doubleArray);
 
             Console.WriteLine(privateDoubleArray[0, 0]);
@@ -47,6 +55,7 @@ namespace WinterTask
             WriteTitle("-------------LINQ");
 
             WriteTitle("15 Integers demo");
+			//TODO: RSDN
             List<int> integers = new List<int> { 1, 2, 51, 4, 5, 52, 7, 53, 9, 54, 11, 12, 55 };
             var result15Ints = from ints in integers
                                where ints > 50
@@ -108,6 +117,7 @@ namespace WinterTask
 
             WriteTitle("A names");
             IEnumerable<Contact> aNames = from contact in contacts
+				//TODO: Комментарии ставятся НАД строкой, а не СПРАВА!
                                           where contact.Name[0] == 'А' //Если не найдет, соответственно, ничего не выведет далее
                                           select contact;
 
@@ -128,13 +138,13 @@ namespace WinterTask
 
             WriteTitle("Dictionary<string, Sex>");
             Dictionary<string, Sex> sexDictionary = (from contact in contacts
-                                                     select contact
+                                                     select contact//TODO: RSDN
                                                     ).ToDictionary(contact => contact.ToString(), contact => contact.Sex);
             PrintDictionary(sexDictionary);
 
             WriteTitle("Dictionary<string, Contact>");
             Dictionary<string, Contact> nameDictionary = (from contact in contacts
-                                                          select contact
+                                                          select contact//TODO: RSDN
                                                             ).ToDictionary(contact => contact.Name, contact => contact);
             PrintDictionary(nameDictionary);
 

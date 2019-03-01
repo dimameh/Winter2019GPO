@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
+	//TODO: RSDN
 	/// <summary>
     /// Содержит список строк, индексируемых по первому символу
     /// </summary>

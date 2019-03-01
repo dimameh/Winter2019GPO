@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WinterTask
-{
+{//TODO: RSDN
     /// <summary>
     /// Класс который хранит квадратную матрицу 10x10 IComparable объектов
     /// </summary>
     /// <typeparam name="T"></typeparam>
     class PrivateDoubleArray<T> where T : IComparable
-    {
+    {//TODO: RSDN
         const byte arrayCapacity = 100;
 
 		//Хранимый массив объектов
@@ -42,7 +42,7 @@ namespace WinterTask
         }
         
         private void IndexCorrectException(int i, int j)
-        {
+        {//TODO: RSDN
             if(i > (int)Math.Sqrt(arrayCapacity)-1 || j > (int)Math.Sqrt(arrayCapacity)-1 || i < 0 && j < 0)
             {
                 throw new ArgumentOutOfRangeException();

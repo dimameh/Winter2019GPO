@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
+	//TODO: RSDN
 	/// <summary>
     /// Класс хранящий массив, вмещающий 10 элементов, индексация которых начинается с -5 и заканчивается 5
     /// </summary>
@@ -13,6 +14,7 @@ namespace WinterTask
     class PrivateTenInt<T> where T : IComparable
     {
         private const int Capacity = 10;
+	    
         private T[] IntArray { get; set; } = new T[Capacity];
 
         public PrivateTenInt(T[] array)
@@ -20,6 +22,7 @@ namespace WinterTask
             Array.Clear(IntArray, 0, IntArray.Length);
             if (array.Length <= Capacity) 
             {
+				//TODO: Дубль ниже!
                 for (int i = 0; i < array.Length; i++)
                 {
                     IntArray[i] = array[i];
