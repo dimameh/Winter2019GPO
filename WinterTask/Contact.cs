@@ -17,15 +17,4 @@
             return Name + ' ' + PhoneNumber + ' ' + Sex.ToString();
         }
     }
-
-	//TODO: В отдельный .cs
-	/// <summary>
-    /// Пол
-    /// </summary>    
-    public enum Sex
-    {
-        Male,
-        Female
-    }
-    
 }

@@ -6,18 +6,14 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
-	//TODO: RSDN
 	/// <summary>
     /// Точка трехмерного пространства
     /// </summary>
-    class Point3D
+    public class Point3D
     {
-	    //TODO: Зачем паблик set?
-		public double X { get; set; } = 0;
-	    //TODO: Зачем паблик set?
-		public double Y { get; set; } = 0;
-	    //TODO: Зачем паблик set?
-		public double Z { get; set; } = 0;
+        private double X { get; }
+        private double Y { get; }
+        private double Z { get; }
 
         public Point3D(double x, double y, double z)
         {
@@ -51,35 +47,6 @@ namespace WinterTask
             return new Point3D(point, point, point);
         }
 
-        public bool Equals(Point3D other)
-        {
-			//TODO: RSDN
-			//TODO: https://stackoverflow.com/questions/814878/c-sharp-difference-between-and-equals
-			return !ReferenceEquals(null, other) && (ReferenceEquals(this, other) || (other.X == X && other.Y == Y && other.Z == Z));
-        }
-
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as Point3D);
-        }
-
-        public override int GetHashCode()
-        {
-            return (X.GetHashCode() + Y.GetHashCode() + Z.GetHashCode());
-        }
-
-        public static bool operator ==(Point3D point1, Point3D point2)
-        {
-	        //TODO: https://stackoverflow.com/questions/814878/c-sharp-difference-between-and-equals
-			return Equals(point1, point2);
-        }
-
-        public static bool operator !=(Point3D point1, Point3D point2)
-        {
-	        //TODO: https://stackoverflow.com/questions/814878/c-sharp-difference-between-and-equals
-			return !Equals(point1, point2);
-        }
-
         public static bool operator <(Point3D point1, Point3D point2)
         {
             return point1.X < point2.X && point1.Y < point2.Y && point1.Z < point2.Z;
@@ -98,6 +65,47 @@ namespace WinterTask
         public static bool operator >=(Point3D point1, Point3D point2)
         {
             return point1.X >= point2.X && point1.Y >= point2.Y && point1.Z >= point2.Z;
+        }
+
+        private bool Equals(Point3D other)
+        {
+            return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            return obj.GetType() == GetType() && Equals((Point3D)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = X.GetHashCode();
+                hashCode = (hashCode * 397) ^ Y.GetHashCode();
+                hashCode = (hashCode * 397) ^ Z.GetHashCode();
+                return hashCode;
+            }
+        }
+
+        public static bool operator ==(Point3D left, Point3D right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Point3D left, Point3D right)
+        {
+            return !Equals(left, right);
         }
     }
 }

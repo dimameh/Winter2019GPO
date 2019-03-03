@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace WinterTask
 {
-	//TODO: RSDN
 	/// <summary>
     /// Содержит список строк, индексируемых по первому символу
     /// </summary>
-    class PrivateStringList
+    public class PrivateStringList
     {
-        private List<string> StringList { get; set; }
+        private List<string> StringList { get; }
 
         public PrivateStringList(List<string> stringList)
         {
@@ -21,10 +20,7 @@ namespace WinterTask
         
         public string this [char symbol]
         {
-            get
-            {
-                return StringList[GetIndexByFirstChar(symbol)];
-            }
+            get => StringList[GetIndexByFirstChar(symbol)];
             set
             {
                 if (GetIndexByFirstChar(symbol) == -1)
