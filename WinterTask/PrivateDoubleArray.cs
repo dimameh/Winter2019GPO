@@ -8,11 +8,30 @@ namespace WinterTask
     /// <typeparam name="T"></typeparam>
     public class PrivateDoubleArray<T> where T : IComparable
     {
+        #region Constants
+
+        /// <summary>
+        ///     Размер массива
+        /// </summary>
         private const byte _arrayCapacity = 100;
 
-        //Хранимый массив объектов
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        ///     Массив хранимых объектов
+        /// </summary>
         private T[] DoubleArray { get; } = new T[_arrayCapacity];
 
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        ///     Конструктор
+        /// </summary>
+        /// <param name="doubleArray"></param>
         public PrivateDoubleArray(T[] doubleArray)
         {
             Array.Clear(DoubleArray, 0, doubleArray.Length);
@@ -23,6 +42,32 @@ namespace WinterTask
             }
         }
 
+        #endregion
+
+        #region Private methods
+
+        /// <summary>
+        ///     Проверка входящих индексов на корректность.
+        ///     Выбрасывает ошибку в случае некорректных входных параметров (индексов)
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        private static void IndexCorrectException(int i, int j)
+        {
+            if (i > (int) Math.Sqrt(_arrayCapacity) - 1 ||
+                j > (int) Math.Sqrt(_arrayCapacity) - 1 || i < 0 && j < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        ///     Оператор доступа к элементам массива по индексам
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public T this[int i, int j]
         {
             get
@@ -34,15 +79,6 @@ namespace WinterTask
             {
                 IndexCorrectException(i, j);
                 DoubleArray[(int) Math.Sqrt(_arrayCapacity) * i + j] = value;
-            }
-        }
-
-        private static void IndexCorrectException(int i, int j)
-        {
-            if (i > (int) Math.Sqrt(_arrayCapacity) - 1 ||
-                j > (int) Math.Sqrt(_arrayCapacity) - 1 || i < 0 && j < 0)
-            {
-                throw new ArgumentOutOfRangeException();
             }
         }
     }

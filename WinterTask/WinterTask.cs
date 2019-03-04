@@ -11,6 +11,10 @@ namespace WinterTask
     {
         #region Private methods
 
+        /// <summary>
+        ///     Вывод названия раздела
+        /// </summary>
+        /// <param name="title"></param>
         private static void WriteTitle(string title)
         {
             Console.WriteLine();
@@ -18,22 +22,57 @@ namespace WinterTask
             Console.WriteLine(title + "-------------");
         }
 
+        /// <summary>
+        ///     Вывод словаря
+        /// </summary>
+        /// <typeparam name="V"></typeparam>
+        /// <typeparam name="K"></typeparam>
+        /// <param name="dictionary"></param>
+        private static void PrintDictionary<V, K>(Dictionary<V, K> dictionary)
+        {
+            foreach (var element in dictionary)
+            {
+                Console.WriteLine(element.Key + " - " + element.Value);
+            }
+        }
+
+        /// <summary>
+        ///     Вывод списка
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        private static void PrintList<T>(IEnumerable<T> list)
+        {
+            if (list == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            foreach (var element in list)
+            {
+                Console.Write(element + ", ");
+            }
+        }
+
         #endregion
 
         #region Public methods
 
-        //Точка входа
+        /// <summary>
+        ///     Точка входа
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             WriteTitle("stringList demo");
-            
+
             var stringList =
                 new PrivateStringList(new List<string> {"Asdfg", "Qwerty", "Qxcvb"});
 
             Console.WriteLine(stringList['Q']);
 
             WriteTitle("PrivateTenInt demo");
-            
+
             var intList =
                 new PrivateTenInt<int>(new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9});
 
@@ -46,7 +85,7 @@ namespace WinterTask
             {
                 doubleArray[i] = i;
             }
-            
+
             var privateDoubleArray = new PrivateDoubleArray<double>(doubleArray);
 
             Console.WriteLine(privateDoubleArray[0, 0]);
@@ -56,7 +95,7 @@ namespace WinterTask
             WriteTitle("-------------LINQ");
 
             WriteTitle("15 Integers demo");
-            
+
             var integers = new List<int>
             {
                 1,
@@ -151,9 +190,9 @@ namespace WinterTask
 
             //Если не найдет, соответственно, ничего не выведет далее
             var aNames = from contact in contacts
-                            where
-                            contact.Name[0] == 'А'
-                        select contact;
+                where
+                    contact.Name[0] == 'А'
+                select contact;
 
             PrintList(aNames);
 
@@ -193,28 +232,6 @@ namespace WinterTask
                 select contact).Sum(contact => contact.PhoneNumber));
 
             Console.Read();
-        }
-
-        private static void PrintDictionary<V, K>(Dictionary<V, K> dictionary)
-        {
-            foreach (var element in dictionary)
-            {
-                Console.WriteLine(element.Key + " - " + element.Value);
-            }
-        }
-
-
-        private static void PrintList<T>(IEnumerable<T> list)
-        {
-            if (list == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            foreach (var element in list)
-            {
-                Console.Write(element + ", ");
-            }
         }
 
         #endregion

@@ -10,18 +10,28 @@ namespace WinterTask
     {
         #region Constants
 
+        /// <summary>
+        ///     Вместимость массива
+        /// </summary>
         private const int _capacity = 10;
 
         #endregion
 
         #region Properties
 
+        /// <summary>
+        ///     Хранимый массив объектов
+        /// </summary>
         private T[] IntArray { get; } = new T[_capacity];
 
         #endregion
 
         #region Constructor
 
+        /// <summary>
+        ///     Конструктор
+        /// </summary>
+        /// <param name="array"></param>
         public PrivateTenInt(T[] array)
         {
             Array.Clear(IntArray, 0, IntArray.Length);
@@ -40,6 +50,10 @@ namespace WinterTask
 
         #region Private methods
 
+        /// <summary>
+        ///     Проверка индекса на корректность
+        /// </summary>
+        /// <param name="index"></param>
         private static void IsIndexCorrect(int index)
         {
             if (Math.Abs(index) > _capacity / 2 || index == 0)
@@ -50,6 +64,11 @@ namespace WinterTask
 
         #endregion
 
+        /// <summary>
+        ///     Оператор доступа к элементам массива по индексам
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public T this[int index]
         {
             get
