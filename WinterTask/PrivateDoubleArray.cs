@@ -5,7 +5,7 @@ namespace WinterTask
     /// <summary>
     ///     Класс который хранит квадратную матрицу 10x10 IComparable объектов
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Тип массива хранимых объектов, который должен быть IComparable</typeparam>
     public class PrivateDoubleArray<T> where T : IComparable
     {
         #region Constants
@@ -31,14 +31,14 @@ namespace WinterTask
         /// <summary>
         ///     Конструктор
         /// </summary>
-        /// <param name="doubleArray"></param>
-        public PrivateDoubleArray(T[] doubleArray)
+        /// <param name="array">Массив объектов который будет храниться в объекте</param>
+        public PrivateDoubleArray(T[] array)
         {
-            Array.Clear(DoubleArray, 0, doubleArray.Length);
+            Array.Clear(DoubleArray, 0, array.Length);
 
-            for (var i = 0; i < doubleArray.Length && i < _arrayCapacity; i++)
+            for (var i = 0; i < array.Length && i < _arrayCapacity; i++)
             {
-                DoubleArray[i] = doubleArray[i];
+                DoubleArray[i] = array[i];
             }
         }
 
@@ -50,8 +50,8 @@ namespace WinterTask
         ///     Проверка входящих индексов на корректность.
         ///     Выбрасывает ошибку в случае некорректных входных параметров (индексов)
         /// </summary>
-        /// <param name="i"></param>
-        /// <param name="j"></param>
+        /// <param name="i">первый индекс</param>
+        /// <param name="j">второй индекс</param>
         private static void IndexCorrectException(int i, int j)
         {
             if (i > (int) Math.Sqrt(_arrayCapacity) - 1 ||
@@ -64,10 +64,11 @@ namespace WinterTask
         #endregion
 
         /// <summary>
-        ///     Оператор доступа к элементам массива по индексам
+        ///     Возвращает элемент исходя из передаваемых индексов
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="i">Первый индекс</param>
+        /// <param name="j">Второй индекс</param>
+        /// <returns>Элемент массива исходя из двух входящих индексов - i и j</returns>
         public T this[int i, int j]
         {
             get

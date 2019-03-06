@@ -14,7 +14,7 @@ namespace WinterTask
         /// <summary>
         ///     Вывод названия раздела
         /// </summary>
-        /// <param name="title"></param>
+        /// <param name="title">Название раздела</param>
         private static void WriteTitle(string title)
         {
             Console.WriteLine();
@@ -25,9 +25,9 @@ namespace WinterTask
         /// <summary>
         ///     Вывод словаря
         /// </summary>
-        /// <typeparam name="V"></typeparam>
-        /// <typeparam name="K"></typeparam>
-        /// <param name="dictionary"></param>
+        /// <typeparam name="V">Тип ключа словаря</typeparam>
+        /// <typeparam name="K">Тип значения словаря</typeparam>
+        /// <param name="dictionary">Словарь</param>
         private static void PrintDictionary<V, K>(Dictionary<V, K> dictionary)
         {
             foreach (var element in dictionary)
@@ -39,8 +39,8 @@ namespace WinterTask
         /// <summary>
         ///     Вывод списка
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
+        /// <typeparam name="T">Тип хранимый в списке</typeparam>
+        /// <param name="list">Список</param>
         private static void PrintList<T>(IEnumerable<T> list)
         {
             if (list == null)
@@ -61,11 +61,14 @@ namespace WinterTask
         /// <summary>
         ///     Точка входа
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">Аргументы, сообщаемые при запуске</param>
         public static void Main(string[] args)
         {
+            #region Демонстрация класса PrivateStringList
+
             WriteTitle("stringList demo");
 
+            //Список для демонстрации
             var stringList =
                 new PrivateStringList(new List<string> {"Asdfg", "Qwerty", "Qxcvb"});
 
@@ -79,6 +82,10 @@ namespace WinterTask
             Console.WriteLine(intList[-5]);
             Console.WriteLine(intList[-4]);
 
+            #endregion
+
+            #region Демонстрация класса PrivateDoubleArray
+
             WriteTitle("PrivateDoubleArray demo");
             var doubleArray = new double[100];
             for (var i = 0; i < 100; i++)
@@ -91,6 +98,9 @@ namespace WinterTask
             Console.WriteLine(privateDoubleArray[0, 0]);
             Console.WriteLine(privateDoubleArray[1, 5]);
 
+            #endregion
+
+            #region Демонстрация работы с LINQ
 
             WriteTitle("-------------LINQ");
 
@@ -230,6 +240,8 @@ namespace WinterTask
             Console.WriteLine((from contact in contacts
                 where contact.Name.Contains("-")
                 select contact).Sum(contact => contact.PhoneNumber));
+
+            #endregion
 
             Console.Read();
         }

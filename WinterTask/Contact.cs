@@ -7,13 +7,19 @@
     {
         #region Properties
 
-        //Имя
+        /// <summary>
+        ///     Имя
+        /// </summary>
         public string Name { get; set; }
 
-        //Телефонный номер
+        /// <summary>
+        ///     Телефонный номер
+        /// </summary>
         public long PhoneNumber { get; set; }
 
-        //Пол
+        /// <summary>
+        ///     Пол
+        /// </summary>
         public Sex Sex { get; set; }
 
         #endregion
@@ -23,7 +29,7 @@
         /// <summary>
         ///     Перегрузка метода перевода объекта в строку
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Информацию о полях класса в формате [Name + ' ' + PhoneNumber + ' ' + Sex] </returns>
         public override string ToString()
         {
             return Name + ' ' + PhoneNumber + ' ' + Sex;

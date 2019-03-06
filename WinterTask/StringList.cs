@@ -22,7 +22,7 @@ namespace WinterTask
         /// <summary>
         ///     Конструктор
         /// </summary>
-        /// <param name="stringList"></param>
+        /// <param name="stringList">Список строк который будет храниться в объекте</param>
         public PrivateStringList(List<string> stringList)
         {
             StringList = stringList;
@@ -35,8 +35,8 @@ namespace WinterTask
         /// <summary>
         ///     Получить индекс строки в списке по первому символу
         /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
+        /// <param name="symbol">Символ с которого должна начинаться искомая строка</param>
+        /// <returns>Строку, которая начинается с указанного символа если таковая имеется, в противном случае возвращает -1</returns>
         private int GetIndexByFirstChar(char symbol)
         {
             for (var i = 0; i < StringList.Capacity; i++)
@@ -55,8 +55,8 @@ namespace WinterTask
         /// <summary>
         ///     Оператор доступа к элементам массива по индексам
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="symbol">Символ с которого должна начинаться искомая строка</param>
+        /// <returns>Элемент списка исходя из передаваемого символа</returns>
         public string this[char symbol]
         {
             get => StringList[GetIndexByFirstChar(symbol)];

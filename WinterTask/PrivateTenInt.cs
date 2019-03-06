@@ -5,7 +5,7 @@ namespace WinterTask
     /// <summary>
     ///     Класс хранящий массив, вмещающий 10 элементов, индексация которых начинается с -5 и заканчивается 5
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Тип массива хранимых объектов, который должен быть IComparable</typeparam>
     public class PrivateTenInt<T> where T : IComparable
     {
         #region Constants
@@ -31,7 +31,7 @@ namespace WinterTask
         /// <summary>
         ///     Конструктор
         /// </summary>
-        /// <param name="array"></param>
+        /// <param name="array">Массив объектов который будет храниться в объекте</param>
         public PrivateTenInt(T[] array)
         {
             Array.Clear(IntArray, 0, IntArray.Length);
@@ -53,7 +53,7 @@ namespace WinterTask
         /// <summary>
         ///     Проверка индекса на корректность
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">Проверяемый индекс</param>
         private static void IsIndexCorrect(int index)
         {
             if (Math.Abs(index) > _capacity / 2 || index == 0)
@@ -67,8 +67,8 @@ namespace WinterTask
         /// <summary>
         ///     Оператор доступа к элементам массива по индексам
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="index">Индекс элемента</param>
+        /// <returns>Возвращает элемент исходя из передаваемого индекса</returns>
         public T this[int index]
         {
             get
